@@ -1,56 +1,42 @@
-import List.CarrinhodeCompras;
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import List.SomaNumeros;
+
 import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
-
-        // Criando uma instância do carrinho de compras
-        CarrinhodeCompras carrinhoDeCompras = new CarrinhodeCompras();
+        SomaNumeros nums = new SomaNumeros();
 
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Bem vindo à lista de números!");
 
-        while (true) {
+        while(true) {
+            System.out.println("========================================");
+            System.out.println("Escolha a opção que deseja fazer:");
+            System.out.println("1 - Adicionar número");
+            System.out.println("2 - Exibir lista");
+            System.out.println("3 - Encontrar número maior");
+            System.out.println("4 - Encontrar número menor");
+            System.out.println("5 - Calcular soma de todos os números da lista");
+            System.out.println("========================================");
 
-            System.out.println("o que deseja fazer?");
+            int opt = scanner.nextInt();
 
-            System.out.println();
-
-            System.out.println("1 - Adicionar Item (nome preco qtd)");
-            System.out.println("2 - Remover item (nome)");
-            System.out.println("3 - Exibir itens");
-            System.out.println("4 - Calcular valor total");
-
-            System.out.println();
-
-            int option = scanner.nextInt();
-
-            switch (option) {
+            switch (opt) {
                 case 1 -> {
-                    scanner.nextLine(); // consumir a quebra de linha pendente
-                    System.out.print("Nome do item: ");
-                    String nome = scanner.nextLine();
-
-                    System.out.print("Preço: ");
-                    double preco = scanner.nextDouble();
-
-                    System.out.print("Quantidade: ");
-                    int quantidade = scanner.nextInt();
-
-                    carrinhoDeCompras.adicionarItem(nome, preco, quantidade);
+                    scanner.nextLine();
+                    System.out.println("Digite um número:");
+                    int n = scanner.nextInt();
+                    nums.adicionarNumero(n);
                 }
-                case 2 -> {
-                    scanner.nextLine(); // consumir a quebra de linha pendente
-                    System.out.print("Nome do item a remover: ");
-                    String nome = scanner.nextLine();
-                    carrinhoDeCompras.removerItem(nome);
-                }
-                case 3 -> carrinhoDeCompras.exibirItens();
-                case 4 -> carrinhoDeCompras.calcularValorTotal();
-                default -> System.out.println("Digite uma opção válida!");
+                case 2 -> nums.exibirNumeros();
+                case 3 -> System.out.println(nums.encontrarMaiorNumero());
+                case 4 -> System.out.println(nums.encontrarMenorNumero());
+                case 5 -> System.out.println(nums.calcularSoma());
             }
-            System.out.println();
         }
-
 
     }
 }
